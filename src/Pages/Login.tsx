@@ -12,9 +12,6 @@ export default function Login() {
 				window.location.href = "/";
 			}
 
-			const body = { "code": code };
-			console.log(JSON.stringify(body));
-
 			const response = await fetch("/api/user/login", {
 				method: "POST",
 				headers: { "Content-Type": "application/json" },
