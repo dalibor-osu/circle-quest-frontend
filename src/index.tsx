@@ -1,5 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import "./index.css";
+
 import Home from "./Pages/Home";
 import App from "./Pages/App";
 import Profile from "./Pages/Profile";
