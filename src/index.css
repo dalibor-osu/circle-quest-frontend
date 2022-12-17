@@ -12,3 +12,9 @@ h1 {
 p {
   color: white;
 }
+
+pre {
+  color: white;
+  width: 50%;
+  text-align: left;
+}
