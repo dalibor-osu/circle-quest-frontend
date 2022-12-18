@@ -1,6 +1,6 @@
 import React, { createContext, useReducer, useEffect } from "react";
-import { IUser } from "../Interfaces/IUser";
 import { AuthContextType, AuthState, AuthAction, AuthActionKind } from "../Types/Auth";
+import Cookies from "universal-cookie";
 
 export const AuthContext = createContext<AuthContextType | null>(null);
 
@@ -29,15 +29,41 @@ export const AuthContextProvider = ({ children }: Props) => {
 	});
 
 	useEffect(() => {
-		const user_string = localStorage.getItem("user");
+		console.log("Auth Check");
+		const cookies = new Cookies();
+		const token = cookies.get("token");
 
-		if (!user_string) return;
+		if (!token) return;
 
-		const user: IUser = JSON.parse(user_string);
+		const fetchUser = async () => {
+			console.log("Fetching user");
+			const response = await fetch("/api/auth/user", {
+				method: "GET",
+				headers: {
+					"Content-Type": "application/json",
+					"Authorization": "Bearer " + token },
+			});
 
-		if (user) {
-			dispatch({ type: AuthActionKind.LOGIN, payload: user });
-		}
+			if (response.ok) {
+				const json = await response.json();
+				const newToken = json.token;
+				const user = json.user;
+
+				cookies.set("token", newToken, { path: "/" });
+
+				if (user) {
+					dispatch({ type: AuthActionKind.LOGIN, payload: user });
+				}
+			}
+
+			if (!response.ok) {
+				dispatch({ type: AuthActionKind.LOGOUT, payload: null });
+				cookies.remove("token");
+			}
+
+		};
+
+		fetchUser();
 	}, []);
 
 	console.log("AuthContext state:", state);
