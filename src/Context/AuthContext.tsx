@@ -31,7 +31,7 @@ export const AuthContextProvider = ({ children }: Props) => {
 	useEffect(() => {
 		const user_string = localStorage.getItem("user");
 
-		if (!user_string) throw new Error("User not in local storage");
+		if (!user_string) return;
 
 		const user: IUser = JSON.parse(user_string);
 
