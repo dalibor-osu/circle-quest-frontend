@@ -1,9 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import "./index.css";
+
 import Home from "./Pages/Home";
 import App from "./Pages/App";
 import Profile from "./Pages/Profile";
 import Login from "./Pages/Login";
+import { AuthContextProvider } from "./Context/AuthContext";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
@@ -29,6 +32,8 @@ const router = createBrowserRouter([
 
 
 root.render(
-	<RouterProvider router={router} fallbackElement={<App />}></RouterProvider>,
+	<AuthContextProvider>
+		<RouterProvider router={router} fallbackElement={<App />}></RouterProvider>
+	</AuthContextProvider>,
 );
 

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import Header from "../Components/Header";
 
 import { IUser } from "../Interfaces/IUser";
 
@@ -14,12 +15,11 @@ export default function Profile() {
 
 			if (response.ok) {
 				const json = await response.json();
-				console.log(json);
-				setRes(JSON.stringify(json));
+				setRes(JSON.stringify(json, null, 2));
 				setUser(json);
 			}
 			else {
-				console.log("User not found");
+				console.error("User not found");
 			}
 		};
 
@@ -29,12 +29,13 @@ export default function Profile() {
 
 	return (
 		<div>
+			<Header/>
 			{user && res && (
 				<>
 					<h1>{user.username}</h1>
-					<img></img>
+					<img src={user.additional_info.avatar_url}></img>
 					<br></br>
-					<p style={{ "width": "1000px", "wordWrap": "break-word" }}>{res}</p>
+					<div><pre>{ res }</pre></div>
 				</>
 			)}
 			{!user && <h1>User not found!</h1>}
