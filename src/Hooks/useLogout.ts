@@ -10,7 +10,7 @@ export const useLogout = () => {
 		const kind = AuthActionKind.LOGOUT;
 		// remove user from storage
 		localStorage.removeItem("user");
-		cookies.remove("user");
+		cookies.remove("token", { path: "/" });
 
 		// dispatch logout action
 		dispatch({ type: kind, payload: null });

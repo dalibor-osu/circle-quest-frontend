@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import Header from "../Components/Header";
 
 import { IUser } from "../Interfaces/IUser";
 
@@ -28,6 +29,7 @@ export default function Profile() {
 
 	return (
 		<div>
+			<Header/>
 			{user && res && (
 				<>
 					<h1>{user.username}</h1>
