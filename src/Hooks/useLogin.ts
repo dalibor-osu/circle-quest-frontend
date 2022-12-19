@@ -21,7 +21,6 @@ export const useLogin = () => {
 		const json = await response.json();
 
 		if (!response.ok) {
-			console.log(json);
 			console.log("Error when logging in user");
 			setIsLoading(false);
 			setError(json.error);
@@ -29,22 +28,21 @@ export const useLogin = () => {
 
 
 		if (response.ok) {
-			console.log(json);
 			const token = json.token;
-			const id = json.id;
 			const cookies = new Cookies();
 			const type = AuthActionKind.LOGIN;
 
 			// save the user to local storage
 			if (token) cookies.set("token", token, { path: "/" });
-			localStorage.setItem("user", JSON.stringify(json.user));
 
 			// update auth context
 			dispatch({ type, payload: json.user });
 
 			setIsLoading(false);
 
-			if (id) window.location.href = "/users/" + id;
+			window.opener = null;
+			window.open("", "_self");
+			window.close();
 		}
 	};
 

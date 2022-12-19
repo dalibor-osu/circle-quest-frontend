@@ -9,7 +9,6 @@ export const useLogout = () => {
 		const cookies = new Cookies;
 		const kind = AuthActionKind.LOGOUT;
 		// remove user from storage
-		localStorage.removeItem("user");
 		cookies.remove("token", { path: "/" });
 
 		// dispatch logout action
