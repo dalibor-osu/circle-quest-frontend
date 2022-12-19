@@ -22,7 +22,7 @@ export default function Header() {
 	}
 
 	const handleLogin = () => {
-		window.open("https://osu.ppy.sh/oauth/authorize?response_type=code&client_id=19415&redirect_uri=http://localhost:3000/login&scope=public", "_blank");
+		window.open("https://osu.ppy.sh/oauth/authorize?response_type=code&client_id=19415&redirect_uri=http://130.61.47.75:420/login&scope=public", "_blank");
 		listenCookieChange((): void => {
 			window.location.reload();
 		});
