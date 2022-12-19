@@ -34,7 +34,7 @@ export default function Header() {
 
 	return (
 		<div>
-			<Link to="/users/6886572">User Profile</Link>
+			{state.user && <Link to="/users/6886572">User Profile</Link>}
 			<Link to="/">Home</Link>
 			{!state.user && <button onClick={handleLogin}>Log in</button>}
 			{state.user && (

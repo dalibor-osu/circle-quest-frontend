@@ -1,5 +1,5 @@
 {
-  "proxy": "http://130.61.47.75:727",
+  "proxy": "http://localhost:727",
   "name": "circle-quest-frontend",
   "version": "0.1.0",
   "private": true,
