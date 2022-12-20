@@ -49,7 +49,7 @@ export const AuthContextProvider = ({ children }: Props) => {
 				const newToken = json.token;
 				const user = json.user;
 
-				cookies.set("token", newToken, { path: "/" });
+				cookies.set("token", newToken, { path: "/", maxAge: 259000 });
 
 				if (user) {
 					dispatch({ type: AuthActionKind.LOGIN, payload: user });

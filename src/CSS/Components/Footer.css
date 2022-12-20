@@ -1,0 +1,28 @@
+footer {
+    background-color: #1b1b1b;
+    padding: 10px;
+    width: 100%;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0px;
+    right: 50%;
+    flex: 1;
+    transform: translate(50%, 0%);
+}
+
+.footer .footer-container {
+    color: white;
+}
+
+.footer .footer-container img {
+    height: 2rem;
+    vertical-align: middle;
+    padding: 0px;
+    margin: 0px;
+}
+
+.logo {
+    margin: 5px;
+}

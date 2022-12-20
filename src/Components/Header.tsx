@@ -1,6 +1,7 @@
 import { useLogout } from "../Hooks/useLogout";
 import { useAuthContext } from "../Hooks/useAuthContext";
 import { Link } from "react-router-dom";
+import "../CSS/Components/Header.css";
 
 export default function Header() {
 	const { logout } = useLogout();
@@ -33,16 +34,26 @@ export default function Header() {
 	};
 
 	return (
-		<div>
-			<Link to="/users/6886572">User Profile</Link>
-			<Link to="/">Home</Link>
-			{!state.user && <button onClick={handleLogin}>Log in</button>}
-			{state.user && (
-				<>
-					<p>You're currently logged in as: {state.user.username.toUpperCase()}</p>
-					<button onClick={handleLogout}>Log out</button>
-				</>
-			)}
-		</div>
+		<header className="header">
+			<div className="header-links">
+				<div className="header-link-container">
+					{state.user && <Link className="header-link" to={"/users/" + state.user.user_id}>User Profile</Link>}
+					<Link className="header-link" to="/">Home</Link>
+				</div>
+			</div>
+
+			<div className="header-title-container">
+				<h1 className="header-title">CIRCLE QUEST</h1>
+			</div>
+			<div className="logged-container">
+				{!state.user && <button onClick={handleLogin}>Log In</button>}
+				{state.user && (
+					<>
+						<span className="logged-in">Logged in as: {state.user.username.toUpperCase()}</span>
+						<button onClick={handleLogout}>Log Out</button>
+					</>
+				)}
+			</div>
+		</header>
 	);
 }
