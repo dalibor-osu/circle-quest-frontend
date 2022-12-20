@@ -1,0 +1,22 @@
+.logged-only {
+    background-color: rgb(122, 0, 0);
+    text-align: center;
+    padding: 5px;
+    margin: 0px;
+}
+
+.logged-only .sorry-message {
+    padding: 0px;
+    margin: 0px;
+}
+
+.logged-only .if-allowed {
+    margin: 0px;
+    color: rgb(163, 163, 163);
+}
+
+.logged-only .if-allowed a {
+    margin: 0px;
+    color: rgb(80, 66, 206);
+    text-decoration: none;
+}
